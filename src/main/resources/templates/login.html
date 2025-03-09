@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 350px; /* Adjust width as needed */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: calc(100% - 12px); /* Account for padding and border */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        .form-group input:focus{
+            outline: none;
+            border-color: #007bff; /* Highlight on focus */
+            box-shadow: 0 0 5px rgba(0,123,255,0.2); /* Subtle shadow on focus */
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message, .logout-message {
+            color: #dc3545; /* Red color for error */
+            margin-top: 10px;
+            text-align: center;
+        }
+        .logout-message{
+            color: #28a745; /* Green color for logout */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <div th:if="${param.error}" class="error-message">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="logout-message">
+        You have been logged out.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required="required">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required="required">
+        </div>
+        <button type="submit" class="btn">Sign In</button>
+    </form>
+</div>
+
+</body>
+</html>

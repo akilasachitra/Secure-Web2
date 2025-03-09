@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div class="welcome-container">
+    <div class="welcome-content">
+        <h1>Welcome!</h1>
+        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+    </div>
+</div>
+
+</body>
+</html>
